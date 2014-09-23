@@ -12,4 +12,4 @@ do {
 } while (!preg_match('/[AEIOUY]/', $word));
 
 $word = strtolower($word);
-var_dump($word);
+echo $word;
