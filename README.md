@@ -18,10 +18,10 @@ The data can actually be compiled from any dictionary or other hulking word list
 ### [distinct_word_lengths.json](https://github.com/pcrov/Englishy-Word-Generator/blob/master/data/distinct_word_lengths.json) ###
 
 ```json
-    [0,26,622,4615,6977,10541,13341,14392,13284,11079,8468,5769,3700,2272,1202,668,283,158,64,40,16,1,5,2]
+    [0,26,622,4615,6977,10541,13341,...
 ```
 
-This one is complete. It is a (0-indexed) distribution of lengths of distinct words. Each index is the word length and each value how many words of that length were found. So, for example, there were 4615 distinct words that were 3 characters long.
+This one is a (0-indexed) distribution of lengths of distinct words. Each index is the word length and each value how many words of that length were found. So, for example, there were 4615 distinct words that were 3 characters long.
 
 We'll use this to decide how long our new word should be. Basically we add up all the values, pick a random number between 1 and the total, then find where in the set it lays. The key for that element is how long the word will be.
 
@@ -128,14 +128,17 @@ This takes a string `$word` and fills it to `$length` from the set of given `$tr
     $bigrams  = json_decode(file_get_contents('data/word_start_bigrams.json'), true);
     $trigrams = json_decode(file_get_contents('data/trigrams.json'), true);
 
-    do {
-        $length = array_weighted_rand($lengths);
-        $start  = array_weighted_rand($bigrams);
-        $word = fill_word($start, $length, $trigrams);
-    } while (!preg_match('/[AEIOUY]/', $word));
+    for ($i = 0; $i < 10; $i++) {
+        do {
+            $length = array_weighted_rand($lengths);
+            $start  = array_weighted_rand($bigrams);
+            $word   = fill_word($start, $length, $trigrams);
+        } while (!preg_match('/[AEIOUY]/', $word));
     
-    $word = strtolower($word);
-    echo $word;
+        $word = strtolower($word);
+        echo "$word\n";
+    }
+
 ```
 
 What we're doing is getting a random length, and random bigram to begin the word with, then filling it up. The [`preg_match()`](http://us1.php.net/manual/en/function.preg-match.php) is just to validate that the word contains a vowel, which isn't otherwise guaranteed. If it doesn't, try again.
@@ -150,22 +153,16 @@ Yeah, you might generate a real word. Just pronounce it different if you want to
 
 Running a handful of times landed me with these:
 
-    ingsi
-    bytionstso
-    secan
-    hischin
-    guagetill
-    offica
-    baysibinedi
-    adecion
-    pri
-    wastooke
-    welvency
-    entes
-    conees
-    comem
-    whiceizeduci
-    cressilb
+    ancover             ingennized          plesuri             asymbablew
+    orkno               oftedi              nestrat             arlysect
+    welvency            thembe              therespaid          frokedgerition
+    judeth              ist                 rectede             privede
+    aprommautu          offeleal            townerislo          callynerly
+    thentsi             perma               themenum            agesputherflone
+    pecticangenti       whoult              ifileyea            onster
+    flatco              powne               prative             betion
+    inegansith          meraddin            theste              mysistai
+    skerest             uppre               ongdonc             hadmints
 
 All of which my spell-checker hates.
 
