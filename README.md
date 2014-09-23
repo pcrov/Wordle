@@ -18,10 +18,10 @@ The data can actually be compiled from any dictionary or other hulking word list
 ### [distinct_word_lengths.json](https://github.com/pcrov/Englishy-Word-Generator/blob/master/data/distinct_word_lengths.json) ###
 
 ```json
-    [0,26,622,4615,6977,10541,13341,14392,13284,11079,8468,5769,3700,2272,1202,668,283,158,64,40,16,1,5,2]
+    [0,26,622,4615,6977,10541,13341,...
 ```
 
-This one is complete. It is a (0-indexed) distribution of lengths of distinct words. Each index is the word length and each value how many words of that length were found. So, for example, there were 4615 distinct words that were 3 characters long.
+This one is a (0-indexed) distribution of lengths of distinct words. Each index is the word length and each value how many words of that length were found. So, for example, there were 4615 distinct words that were 3 characters long.
 
 We'll use this to decide how long our new word should be. Basically we add up all the values, pick a random number between 1 and the total, then find where in the set it lays. The key for that element is how long the word will be.
 
