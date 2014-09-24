@@ -11,13 +11,13 @@ What can make a word look somewhat logical is if it's composed of characters in 
 
 Basically you take any two letters, like "so", and add another that commonly comes after it, like "l". Then take the last two letters, "ol", and find what comes after that. Rinse/repeat until you've got a word of whatever length you'd like - *"solverom"*.
 
-Sourcing from [Peter Norvig's n-gram data](http://norvig.com/mayzner.html) (which itself was compiled from [Google books ngrams](http://storage.googleapis.com/books/ngrams/books/datasetsv2.html)), I've put together a [few handy json files](https://github.com/pcrov/Englishy-Word-Generator/tree/master/data).
+Sourcing from [Peter Norvig's n-gram data](http://norvig.com/mayzner.html) (which itself was compiled from [Google books ngrams](http://storage.googleapis.com/books/ngrams/books/datasetsv2.html)), I've put together a [few handy json files](https://github.com/pcrov/Wordle/tree/master/data).
 
 The data can actually be compiled from any dictionary or other hulking word list, and is structured like so...
 
 ---
 
-### [distinct_word_lengths.json](https://github.com/pcrov/Englishy-Word-Generator/blob/master/data/distinct_word_lengths.json) ###
+### [distinct_word_lengths.json](https://github.com/pcrov/Wordle/blob/master/data/distinct_word_lengths.json) ###
 
 ```json
     [0,26,622,4615,6977,10541,13341,...
@@ -29,7 +29,7 @@ We'll use this to decide how long our new word should be. Basically we add up al
 
 ---
 
-### [word_start_bigrams.json](https://github.com/pcrov/Englishy-Word-Generator/blob/master/data/word_start_bigrams.json) ###
+### [word_start_bigrams.json](https://github.com/pcrov/Wordle/blob/master/data/word_start_bigrams.json) ###
 
 ```json
     {
@@ -46,7 +46,7 @@ We'll use this to decide what to start our word with.
 
 ---
 
-### [trigrams.json](https://github.com/pcrov/Englishy-Word-Generator/blob/master/data/trigrams.json) ###
+### [trigrams.json](https://github.com/pcrov/Wordle/blob/master/data/trigrams.json) ###
 
 ```json
     {
