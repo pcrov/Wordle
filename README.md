@@ -1,5 +1,7 @@
-Englishy Word Generator
+Wordle
 =======================
+
+*Why the name "Wordle"? Because that's what it generated for itself when I fed it "word" as a starting point.*
 
 Some n-gram data, a few simple utility functions, and an example script for generating English-like words. Built to answer ["How can I generate a random logical word?"](http://stackoverflow.com/questions/25966526/how-can-i-generate-a-random-logical-word) found at Stack Overflow.
 
