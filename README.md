@@ -3,7 +3,11 @@ Wordle
 
 *Why the name "Wordle"? Because that's what it generated for itself when I fed it "word" as a starting point.*
 
-Some n-gram data, a few simple utility functions, and an example script for generating English-like words. Built to answer ["How can I generate a random logical word?"](http://stackoverflow.com/questions/25966526/how-can-i-generate-a-random-logical-word) found at Stack Overflow.
+Some n-gram data, a couple simple utility functions, and an example script for generating English-like words. Built to answer ["How can I generate a random logical word?"](http://stackoverflow.com/questions/25966526/how-can-i-generate-a-random-logical-word) found at Stack Overflow.
+
+## Requirements ##
+
+PHP 5.6.3 or higher with the [GMP extension](http://php.net/manual/en/book.gmp.php).
 
 ## Method & Data ##
 
@@ -75,17 +79,7 @@ This is what we'll use to build up the rest of the word.
 
 ## Functions ##
 
-First we need a few utility functions. Found in `src/functions.php`.
-
-### gmp_rand() ###
-
-```php
-    function gmp_rand($min, $max) { ... }
-```
-
-Because some of the numbers we need to generate can be larger than [`PHP_INT_MAX`](http://php.net/manual/en/reserved.constants.php#constant.php-int-max) we'll use the [PHP GMP extension](http://php.net/manual/en/book.gmp.php) to deal with them. Simple enough [`rand()`](http://us1.php.net/manual/en/function.rand.php) work-a-like.
-
----
+First we need a couple utility functions. Found in `src/functions.php`.
 
 ### array_weighted_rand() ###
 
@@ -125,7 +119,7 @@ This takes a string `$word` and fills it to `$length` from the set of given `$tr
 
 ```php
     require_once __DIR__ . '/src/functions.php';
-    
+
     $lengths  = json_decode(file_get_contents('data/distinct_word_lengths.json'), true);
     $bigrams  = json_decode(file_get_contents('data/word_start_bigrams.json'), true);
     $trigrams = json_decode(file_get_contents('data/trigrams.json'), true);
@@ -136,7 +130,7 @@ This takes a string `$word` and fills it to `$length` from the set of given `$tr
             $start  = array_weighted_rand($bigrams);
             $word   = fill_word($start, $length, $trigrams);
         } while (!preg_match('/[AEIOUY]/', $word));
-    
+
         $word = strtolower($word);
         echo "$word\n";
     }
