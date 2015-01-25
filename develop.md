@@ -13,7 +13,7 @@ phpcs and phpmd should stay quiet as long as you don't anger them
 - vendor\bin\phpdoc.bat
 
 ### Sensible Operating Systems
-- vendor\bin\phpunit --configuration phpunit.xml.dist --coverage-text
-- vendor\bin\phpcs --standard=phpcs.xml
-- vendor\bin\phpmd src text phpmd.xml
-- vendor\bin\phpdoc
+- vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text
+- vendor/bin/phpcs --standard=phpcs.xml
+- vendor/bin/phpmd src text phpmd.xml
+- vendor/bin/phpdoc

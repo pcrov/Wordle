@@ -7,9 +7,9 @@ before_script:
   - composer install
 
 script:
-  - vendor\bin\phpcs --standard=phpcs.xml
-  - vendor\bin\phpmd src text phpmd.xml
-  - vendor\bin\phpunit --configuration phpunit.xml.dist --coverage-clover=coverage.clover --coverage-text
+  - vendor/bin/phpcs --standard=phpcs.xml
+  - vendor/bin/phpmd src text phpmd.xml
+  - vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-clover=coverage.clover --coverage-text
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
