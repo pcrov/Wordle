@@ -1,0 +1,28 @@
+{
+    "name": "pcrov/wordle",
+    "description": "Generates English-looking words.",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Paul Crovella"
+        }
+    ],
+    "autoload": {
+        "files": ["src/functions.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wordle\\Test\\": "test/"
+        }
+    },
+    "require": {
+        "php": ">=5.6.3",
+        "ext-gmp": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.4.*",
+        "phpdocumentor/phpdocumentor": "@dev",
+        "phpmd/phpmd" : "@stable",
+        "squizlabs/php_codesniffer": "2.*"
+    }
+}

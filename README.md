@@ -1,13 +1,17 @@
 Wordle
 =======================
 
+[![Build Status](https://travis-ci.org/pcrov/Wordle.svg?branch=master)](https://travis-ci.org/pcrov/Wordle)
+[![Code Coverage](https://scrutinizer-ci.com/g/pcrov/Wordle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pcrov/Wordle/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pcrov/Wordle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pcrov/Wordle/?branch=master)
+
 *Why the name "Wordle"? Because that's what it generated for itself when I fed it "word" as a starting point.*
 
-Some n-gram data, a couple simple utility functions, and an example script for generating English-like words. Built to answer ["How can I generate a random logical word?"](http://stackoverflow.com/questions/25966526/how-can-i-generate-a-random-logical-word) found at Stack Overflow.
+Some n-gram data, a couple simple utility functions, and an example script for generating English-like words. Built to answer ["How can I generate a random logical word?"](http://stackoverflow.com/q/25966526/3942918) found at Stack Overflow.
 
 ## Requirements ##
 
-PHP 5.6.3 or higher with the [GMP extension](http://php.net/manual/en/book.gmp.php).
+PHP 5.6.3 or higher with the [GMP extension](http://php.net/gmp).
 
 ## Method & Data ##
 
@@ -84,19 +88,19 @@ First we need a couple utility functions. Found in `src/functions.php`.
 ### array_weighted_rand() ###
 
 ```php
-    function array_weighted_rand ($list) { ... }
+    function array_weighted_rand($list) { ... }
 ```
 
-This is much like the built-in [`array_rand()`](http://us2.php.net/manual/en/function.array-rand.php) in that you pass it an array and it'll return a random key. Only this one factors in the weight when picking it.
+This is much like the built-in [`array_rand()`](http://php.net/array_rand) in that you pass it an array and it'll return a random key. Only this one factors in the weight when picking it.
 
 So if you pass in an array that looks like:
 
 ```php
-    array (
+    [
       'foo' => 2,
       'bar' => 4,
       'baz' => 12
-    )
+    ]
 ```
 
 It'll return `bar` about twice as often as it'll return `foo`, and `baz` about three times as often as `bar`.
@@ -106,7 +110,7 @@ It'll return `bar` about twice as often as it'll return `foo`, and `baz` about t
 ### fill_word() ###
 
 ```php
-    function fill_word ($word, $length, $trigrams) { ... }
+    function fill_word($word, $length, $trigrams) { ... }
 ```
 
 This takes a string `$word` and fills it to `$length` from the set of given `$trigrams`. Each iteration it picks from the data set based on the last two characters in the string.
@@ -126,9 +130,9 @@ This takes a string `$word` and fills it to `$length` from the set of given `$tr
 
     for ($i = 0; $i < 10; $i++) {
         do {
-            $length = array_weighted_rand($lengths);
-            $start  = array_weighted_rand($bigrams);
-            $word   = fill_word($start, $length, $trigrams);
+            $length = \Wordle\array_weighted_rand($lengths);
+            $start  = \Wordle\array_weighted_rand($bigrams);
+            $word   = \Wordle\fill_word($start, $length, $trigrams);
         } while (!preg_match('/[AEIOUY]/', $word));
 
         $word = strtolower($word);
@@ -137,7 +141,7 @@ This takes a string `$word` and fills it to `$length` from the set of given `$tr
 
 ```
 
-What we're doing is getting a random length, and random bigram to begin the word with, then filling it up. The [`preg_match()`](http://us1.php.net/manual/en/function.preg-match.php) is just to validate that the word contains a vowel, which isn't otherwise guaranteed. If it doesn't, try again.
+What we're doing is getting a random length, and random bigram to begin the word with, then filling it up. The [`preg_match()`](http://php.net/preg_match) is just to validate that the word contains a vowel, which isn't otherwise guaranteed. If it doesn't, try again.
 
 You can replace this with any sort of validation you might want to do, such as making sure it doesn't match a real word in your database or whatever.
 
