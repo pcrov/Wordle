@@ -7,6 +7,17 @@ checks:
         duplication: true
 
 tools:
+    php_sim: true
+    php_pdepend: true
+    php_analyzer: true
+    php_changetracking: true
     external_code_coverage:
         timeout: 300   # How long should we wait for code coverage (in seconds).
         runs: 1
+    php_code_sniffer:
+        config:
+            ruleset: phpcs.xml
+    php_mess_detector:
+        config:
+            ruleset: phpmd.xml
+    sensiolabs_security_checker: true
