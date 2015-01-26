@@ -4,7 +4,7 @@ namespace Wordle\Test;
 
 use function \Wordle\array_weighted_rand;
 
-class array_weighted_randTest extends \PHPUnit_Framework_TestCase
+class array_weighted_rand_test extends \PHPUnit_Framework_TestCase
 {
 
     /**

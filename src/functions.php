@@ -86,13 +86,11 @@ function array_weighted_rand(array $list)
         return array_search(1, $list);
     }
 
-    $key = "";
     $rand = gmp_random_range(1, $totalWeight);
     foreach ($list as $key => $weight) {
         $rand -= $weight;
         if ($rand <= 0) {
-            break;
+            return $key;
         }
     }
-    return $key;
 }

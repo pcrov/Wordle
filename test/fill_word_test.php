@@ -4,7 +4,7 @@ namespace Wordle\Test;
 
 use function \Wordle\fill_word;
 
-class fill_wordTest extends \PHPUnit_Framework_TestCase
+class fill_word_test extends \PHPUnit_Framework_TestCase
 {
     protected $trigrams = [
         ""   => ["F" => 1],
