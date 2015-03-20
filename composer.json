@@ -20,7 +20,7 @@
         "ext-gmp": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.4.*",
+        "phpunit/phpunit": "4.*",
         "phpdocumentor/phpdocumentor": "@dev",
         "phpmd/phpmd" : "@stable",
         "squizlabs/php_codesniffer": "2.*"
