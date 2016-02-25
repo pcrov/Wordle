@@ -2,8 +2,6 @@ Wordle
 =======================
 
 [![Build Status](https://travis-ci.org/pcrov/Wordle.svg?branch=master)](https://travis-ci.org/pcrov/Wordle)
-[![Code Coverage](https://scrutinizer-ci.com/g/pcrov/Wordle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/pcrov/Wordle/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pcrov/Wordle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/pcrov/Wordle/?branch=master)
 
 *Why the name "Wordle"? Because that's what it generated for itself when I fed it "word" as a starting point.*
 
